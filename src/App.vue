@@ -8,14 +8,9 @@ const listButtonNav = ["Films","Serials","VVTV+"]
 
 <template>
   <div> 
-    <Navbar :listButtonNav="listButtonNav"/>
-    <div> 
-      <router-view />
-    </div>
+    <!-- <Navbar :listButtonNav="listButtonNav"/> -->
+    <router-view />
   </div>
-
-
-
 
   <!-- <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
@@ -34,7 +29,7 @@ const listButtonNav = ["Films","Serials","VVTV+"]
     box-sizing: border-box;
 }
 
-/* header {
+header {
   line-height: 1.5;
 }
 
@@ -59,5 +54,5 @@ const listButtonNav = ["Films","Serials","VVTV+"]
     place-items: flex-start;
     flex-wrap: wrap;
   }
-} */
+}
 </style>

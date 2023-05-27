@@ -1,44 +1,40 @@
 <template>
-    <div> 
-        <form color="white"> 
-            <h4>Create post</h4>
-            <input 
-                
-                class="input" 
-                type="text" 
-                placeholder="Название"
-            >
-            <input 
-                class="input" 
-                type="text" 
-                placeholder="Описание"
-            >
-            <button class="btn" @click="createPost">Создать</button>
-        </form>
-    </div>
+    <v-conteiner> 
+        <v-row>
+            <button v-on:click="fethListVideos">+1</button>
+            <Video
+                v-for="video in list_video"
+                :video="video"
+            />
+           
+         </v-row>
+    </v-conteiner>
 </template>
 
 <script>
+import Video from '../components/videos/Video.vue'
+import axios from "axios"
+
 export default {
-    data() {
+    components: {
+        Video
+    },
+    data: () => {
         return {
-            likes: 10,
-            dislikes: 0,
-            posts: [
-                {id: 1, Name: "Js1", Discription: "Discription1" },
-                {id: 2, Name: "Js2", Discription: "Discription2" },
-                {id: 3, Name: "Js3", Discription: "Discription3" },
+            list_video: [
+                // {id: 1, Name: "Blade", Discription: "Discription1" },
+                // {id: 2, Name: "X-men", Discription: "Discription2" },
+                // {id: 3, Name: "Batman", Discription: "Discription3" },
             ]
         }
     },
     methods: {
-        addLike() { 
-            this.likes +=1;
-        },
-        addDisLike() { 
-            this.dislikes +=1;
-        }
-    }
+        async fethListVideos() {
+            const response = await axios.get ("https://jsonplaceholder.typicode.com/photos?_limit=10")
+            this.list_video = response.data
+            console.log(this.list_video)
+    },  
+},
 }
 </script>
 
@@ -48,22 +44,5 @@ export default {
     padding: 0;
     box-sizing: border-box;
 }
-.post {
-    padding: 15px;
-    border: 2px solid teal;
-    margin-top: 15px;
-}
-.input {
-    width: 100%;
-    padding: 10px 15px;
-    margin-top: 10px;
-}
-.btn {
-    margin-top: 15px;
-    align-self: flex-end;
-    padding: 10px 15px;
-    background: none;
-    color: aqua;
-    border: 2px solid teal;
-}
+
 </style>

@@ -3,6 +3,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from '../src/router/router' // <---
+import axios from 'axios'
 
 // Vuetify
 import 'vuetify/styles'
