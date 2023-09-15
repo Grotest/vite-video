@@ -1,19 +1,23 @@
-import Films from "../pages/Films.vue"
-
+import Films from "../pages/FilmsPage.vue"
+import Serials from "../pages/SerialsPage.vue"
+import HomePage from "../pages/HomePage.vue"
 import { createWebHistory, createRouter } from "vue-router";
 
-
-// const routes = [{
-//     path:'/',
-//     comments: Films
-// }]
-
 const routes = [
-
+    {
+      path: "/",
+      name: "Home",
+      component: HomePage,
+    },
     {
       path: "/Films",
       name: "Films",
       component: Films,
+    },
+    {
+      path: "/Serials",
+      name: "Serials",
+      component: Serials,
     },
   ];
   

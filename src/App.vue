@@ -1,58 +1,61 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 
-const listButtonNav = ["Films","Serials","VVTV+"]
+const listButtonNav = [
+  { name:"Home", link: "/" },
+  { name:"Films", link: "/Films" },
+  { name:"Serials", link: "/Serials" },
+  { name:"VV_TV", link: "/VV_TV"} ]
 </script>
 
 <template>
-  <div> 
-    <!-- <Navbar :listButtonNav="listButtonNav"/> -->
-    <router-view />
-  </div>
-
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld :msg="msg" />
-    </div>
-  </header> -->
-
+  <div class="root"> 
+      <v-conteiner class="navbar">  
+        <Navbar :listButtonNav="listButtonNav"/> 
+      <div class="content_area"> 
+        <v-conteiner>
+          <router-view />
+        </v-conteiner>
+      </div>
+      </v-conteiner>
+      <v-conteiner class="footer"> 
+        <Footer/>
+      </v-conteiner>
+</div>
+ 
 </template>
 
-<style scoped>
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<style lang="sass" scoped>
+@import 'assets/style/main.sass'
+.root
+  display: grid
+  background-color: $background
 
-header {
-  line-height: 1.5;
-}
+.conteiner
+    max-width: 2046px
+    margin: 0px auto
+.footer 
+  height: 250px
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+//   position: relative;
+// }
+// .content_area {
+//   display: flex;
+//   margin-top: 10px;
+//   margin-left: 40px;
+//   margin-right: 40px;
+//   align-content:center;
+//   position: relative;
+// }
+// .navbar {
+//   height: 5px;
+// }
+// .page {
+//   background-color: bisque;
+// }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>

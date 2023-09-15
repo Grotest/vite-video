@@ -1,8 +1,8 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from '../src/router/router' // <---
+import router from '../src/router/router' 
+import mycomponents from '../src/components/UI'
+import './assets/style/main.sass'
 import axios from 'axios'
 
 // Vuetify
@@ -11,10 +11,14 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
+const app = createApp(App)
 const vuetify = createVuetify({
   components,
   directives,
 })
-
+console.log(mycomponents)
+mycomponents.forEach(component => {
+  app.component(component.name, component)
+})
 createApp(App).use(vuetify).use(router).mount('#app')
 // createApp(App).use(router).mount('#app')
