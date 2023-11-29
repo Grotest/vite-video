@@ -7,8 +7,6 @@
         :value="modelValue"
         @update:modelValue="changeOption"
     ></v-select>
-
-   
 </template>
 
 <script>

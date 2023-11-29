@@ -4,23 +4,22 @@
         :modelValue="dialog"
         @update:modelValue="dialog = $event"
         @click="changeDialog"
-        width="800">
+        width="800"
+        height="900"
+      >
         <v-card>
           <v-img
             class="align-end text-white"
-            height="200"
-            :src="content.url"
+            :height="750"
+            :src="content.posterUrlPreview"
             cover
           >
-          <v-card-title>{{ content.id }}</v-card-title>
-            </v-img>
-
-          <v-card-title>{{ content.id }}
-            <span class="text-h5"></span>
-          </v-card-title>
-          <v-card-text>
-            {{content.title}}
-          </v-card-text>
+          <v-card-title height = "25px"> {{ content.nameRu }} </v-card-title>
+          </v-img>
+          <v-for content.genres> </v-for>
+          <div v-for="genre in content.genres">
+                {{ genre.genre }}
+          </div>
           <v-card-actions>
             <v-btn color="orange"> Wath </v-btn>
 
@@ -31,7 +30,9 @@
       </v-dialog>
     </v-row>
   </template>
+
   <script>
+
 import { objectToString } from '@vue/shared';
 
     export default {
@@ -48,7 +49,6 @@ import { objectToString } from '@vue/shared';
         methods: {
             changeDialog(){
                 this.$emit('changeVisible', false)
-                // console.log(this.content)
             }
         }
     }

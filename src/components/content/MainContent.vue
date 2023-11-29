@@ -41,7 +41,7 @@
               <v-scale-transition>
                 <v-icon
                   v-if="isSelected"
-                  color="white"
+                  color="black"
                   size="48"
                   icon="mdi-close-circle-outline"
                 ></v-icon>
@@ -56,7 +56,7 @@
 <style scoped>
 a {
   text-decoration: none;
-  color: #0f7afc;
+  color: #030404;
   font-size: 2rem;
 }
 a:hover {

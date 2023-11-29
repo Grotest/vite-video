@@ -16,7 +16,6 @@ const vuetify = createVuetify({
   components,
   directives,
 })
-console.log(mycomponents)
 mycomponents.forEach(component => {
   app.component(component.name, component)
 })

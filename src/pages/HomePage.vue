@@ -1,6 +1,6 @@
 <script setup>
 import BackgroundHeadContent from '../components/BackgroundHeadContent.vue';
-import Navbar from '../components/Navbar.vue'
+import Quastion_panel from '../components/QuastiosPanel.vue';
 import MainContent from '../components/content/MainContent.vue'; 
 
 const list_head_line = [
@@ -13,12 +13,19 @@ const list_head_line = [
 
 <template>
     <div class="home_page">
-        <div class="background-content__wrapper"> 
-                <BackgroundHeadContent/>
-                <div class="conteiner"> 
-                    <MainContent :header_name_line = head_line  v-for = "head_line in list_head_line"/>
-            </div>
-        </div>     
+      <section class="background-content_wrapper"> 
+        <BackgroundHeadContent/>
+      </section>
+      <div class="main_content">
+        <MainContent 
+            :header_name_line = head_line
+            v-for = "head_line in list_head_line"
+        />
+      </div>
+      <div class="quastion_panel">
+        <Quastion_panel/>
+      </div>
+      
     </div>
 
 </template>
@@ -27,11 +34,11 @@ const list_head_line = [
 @import "../assets/style/main.sass"
 v-btn
     color: white
-.background-content__wrapper
-   
-.conteiner
-  max-width: 1546px
-  margin: 0px auto
-  display: contents
-  max-height: 30px
+.background-content_wrapper
+    position: relative
+    width: 1800px
+    left: -280px
+.main_content
+    // position: relative
+    // top: 710px
 </style>

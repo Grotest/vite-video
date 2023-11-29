@@ -18,13 +18,15 @@ export default {
 <template>
   <div class="page" v-on:click="openContentDialog">
     <v-col cal = "4" class="v_col" > 
-      <div>{{ content.id  }}</div>
-        <v-card-title>{{ content.title }} </v-card-title> 
+        <v-card-title>{{ content.nameRu }} </v-card-title>
         <v-img
-            :src="content.url"
+            :src="content.posterUrlPreview"
             width="200px"
             height="200px"
         />
+        <v-card-title>{{ content.rating }}</v-card-title>
+        <div>{{ content.year }}</div>
+        
     </v-col>
   </div>
 </template>
@@ -32,17 +34,16 @@ export default {
 <style scoped>
 .page {
     color: black;
-    background-color: #1f1e1d; 
 }
-.img {
+.src {
   border-radius: 30px;
 }
 .v_col {
   background-color: #e7e5e2;
   margin: 10px;
   font-size: 15px;
-  width: 200px;
-  height: 150px;
+  width: 220px;
+  height: 350px;
   border-radius: 30px;
   text-align: -webkit-center;
   padding-top: 15px;

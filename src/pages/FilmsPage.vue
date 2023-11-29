@@ -1,11 +1,11 @@
 <template>
-    <ContentForm v-on:addContent="addContent"/>
+    <!-- <ContentForm v-on:addContent="addContent"/> -->
     <Select
         v-model="selectedSort"
         :options="sortOptions"
     />
-    <v-conteiner class="page_list"> 
-        <v-row >       
+    <v-conteiner> 
+        <v-row class="page_list">       
             <Video
                 v-if="!isContentLoading"
                     v-for="video in sortedContent"
@@ -29,11 +29,9 @@
 </template>
 
 <script>
-import Video from '../components/content/Video.vue'
-import ContentForm from '../components/content/ContentForm.vue'
-import ContentDialog from '../components/content/ContentDialog.vue'
+import Video from '../components/Content/Video.vue'
+import ContentForm from '../components/Content/ContentForm.vue'
 import Select from '../components/UI/Select.vue'
-import axios from "axios"
 import ModalDialog from '../components/UI/ModalDialog.vue'
 
 export default {
@@ -45,11 +43,7 @@ export default {
     },
     data: () => {
         return {
-            list_video: [
-                // {id: 1, Name: "Blade", Discription: "Discription1" },
-                // {id: 2, Name: "X-men", Discription: "Discription2" },
-                // {id: 3, Name: "Batman", Discription: "Discription3" },
-            ],
+            list_video: [],
             currentContent: "",
             dialogVisible: false,
             isContentLoading: true,
@@ -86,14 +80,16 @@ export default {
     methods: {
         async fethListVideos() {
             setTimeout(async()=>{
-                const response = await axios.get ("https://jsonplaceholder.typicode.com/photos", { 
-                    params: {
-                        _page: this.page,
-                        _limit: this.limit
-                    }
+                const response = await fetch ("https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1", { 
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-API-KEY": "8c8e1a50-6322-4135-8875-5d40a5420d86",
+                        },
             });
-            this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit)
-            this.list_video = response.data
+            const respData = await response.json();
+            // this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit)
+            this.list_video = respData.films
+            
             this.arrOptions=Object.keys(this.list_video[0])
             this.isContentLoading = false
             for (let option of this.arrOptions) {
@@ -132,10 +128,8 @@ export default {
     box-sizing: border-box;
 }
 .page_list{
-    padding-left: 40px;
-    padding-right: 40px;
+    padding: 0px 40px;
     display: flex;
-    margin-top: 10px;
+    justify-content: space-between;
 }
-
 </style>

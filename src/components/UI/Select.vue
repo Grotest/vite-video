@@ -1,14 +1,13 @@
 <template>
     <v-select
+        chips
         class="select"
         label="Filter by"
+        variant="underlined"
         :items="options"
-        variant="outlined"
         :value="modelValue"
         @update:modelValue="changeOption"
     ></v-select>
-
-   
 </template>
 
 <script>
@@ -34,11 +33,8 @@ export default {
 
 <style scoped>
 .select {
-    background-color: rgb(90, 96, 93);
     border-color: bisque;
     margin: 15px;
-    width: 100%;
+    width: 50%;
 }
-
-
 </style>
