@@ -24,14 +24,7 @@ export default {
         }
     }
   }
-
-// defineProps({
-//   user: {
-//     type: String,
-//     required: true
-//   }
-// })
-
+  
 </script>
 
 <template>
