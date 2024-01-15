@@ -6,18 +6,22 @@ defineProps({
     required: true
   }
 })
+
 </script>
 
 <template>
   <div class="navbar">
     <div class="conteiner_link"> 
       <div v-for="btn in listButtonNav">
+        <router-link :to="{ path:btn.link }" class="btn" >
         <v-btn  
           variant="plain"
-          class="btn"
+          :id="btn.id"
         >
-          <router-link :to="{ path:btn.link }" class="btn" >{{ btn.name }}</router-link>
+        {{ btn.name }}
         </v-btn>
+        </router-link>
+       
       </div>
     </div>
     <div class="permanent_elements">
@@ -44,6 +48,8 @@ defineProps({
   height: 50px
 .btn:hover
   background: $background-btn
+.select_btn
+  background-color: $background-selectBtn
 .navbar
   display: flex
   justify-content: space-between

@@ -3,15 +3,15 @@ import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 
 const listButtonNav = [
-  { name:"Home", link: "/" },
-  { name:"Films", link: "/Films" },
-  { name:"Serials", link: "/Serials" },
-  { name:"VV_TV", link: "/VV_TV"} ]
+  { name:"Home", link: "/", id: "Home" },
+  { name:"Films", link: "/Films", id: "Films" },
+  { name:"Serials", link: "/Serials",  id: "Serials" }
+]
 
 const listButtonFooter = [
-  { name:"support", link: "/" },
-  { name:"privacy", link: "/Films" },
-  { name:"policy", link: "/Serials" }
+  { name:"support", link: "" },
+  { name:"privacy", link: "" },
+  { name:"policy", link: "" }
 ]
 </script>
 
@@ -33,7 +33,6 @@ const listButtonFooter = [
     </div>
    </div>
   </div>
- 
 </template>
 
 <style lang="sass" scoped>
@@ -54,20 +53,6 @@ const listButtonFooter = [
   height: 100%
 .main
   display: block
-// .conteiner_main_content
-//   max-width: 1200px
-//   width: 1100px
-//   margin: 0 auto
-//   padding: 0 15px
-//   background-color: green
-// .content_area
-//   max-width: 1200px
-//   min-width: 900px
-//   margin: 0 auto
-//   padding: 0 15px
-//   background-color: red
-//   max-width: 2046px
-//   margin: 10 px 30px
 .footer
   margin-bottom: 0px
   display: flex

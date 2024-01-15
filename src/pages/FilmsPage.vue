@@ -52,35 +52,24 @@ export default {
             limit: 14,
             totalPages: 0,
             sortOptions: [],
-            //     // {value: 'id', name: 'titles1'},
-            //     // // {value: 'date', name: 'По дате'},
-            //     // {value: 'title', name: 'titles2'},
-            // ],
             arrOptions: [],
+            allowSortOption: ['nameRu', 'nameEn', 'year'],
             dialog: false,
         }
     },
     mounted() {
-        this.fethListVideos()
+        this.fethListVideos(1)
     },
-    // watch: {
-    //     selectedSort(newValue) {
-    //         console.log (newValue)
-    //         this.list_video.sort((post1, post2)=> {
-    //             return post1[newValue]?.localeCompare(post2[newValue])
-    //         })
-    //     },
     computed: {
         sortedContent() {
-            console.log(this.selectedSort)
             return [...this.list_video].sort((post1, post2) => post1[this.selectedSort]?.localeCompare(post2[this.selectedSort])
             )
         },
     },
     methods: {
-        async fethListVideos() {
+        async fethListVideos(page) {
             setTimeout(async()=>{
-                const response = await fetch ("https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1", { 
+                const response = await fetch (`https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=${page}`, { 
                     headers: {
                         "Content-Type": "application/json",
                         "X-API-KEY": "8c8e1a50-6322-4135-8875-5d40a5420d86",
@@ -89,14 +78,8 @@ export default {
             const respData = await response.json();
             // this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit)
             this.list_video = respData.films
-            
-            this.arrOptions=Object.keys(this.list_video[0])
             this.isContentLoading = false
-            for (let option of this.arrOptions) {
-                this.sortOptions.push(option)
-            }
         },500)
-            
         },
         addContent(content) {
             console.log("addContent")
@@ -105,10 +88,9 @@ export default {
         chahgePage(page) {
             this.page = page
             console.log(this.page)
-            this.fethListVideos()
-            // this.page = 3
+            this.fethListVideos(this.page)
         },
-        visibleModalDialog(param){    
+        visibleModalDialog(param) {    
             this.dialog=param
             this.dialog? false : true
         },
@@ -116,6 +98,13 @@ export default {
             this.currentContent = video
             console.log (this.currentContent)
             this.dialog=true
+        },
+        createSetOptions() {
+            console.log(this.list_video)
+            this.arrOptions=Object.keys(this.list_video[0])
+            for (let option of this.arrOptions) {
+                if (this.allowSortOption.includes(option)) this.sortOptions.push(option)
+            }
         }
     },
 }

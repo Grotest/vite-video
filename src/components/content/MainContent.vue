@@ -1,71 +1,47 @@
-<script>
-    export default {
-      data: () => ({
-        model: null,
-      }),
-      props: {
-        header_name_line: {
-            type: Object,
-            required: {}
-        }
-      }
-    }
+
+<script setup>
+
+defineProps({
+  list_head_line: {
+    type: Array,
+    required: true
+  }
+})
 </script>
 
 <template>
-    <v-sheet class="mx-auto" elevation="8" max-width="1546px">
-        <div class="helf_header_with_see">
-            <a> 
-                {{ header_name_line.name }}
-            </a>
-        </div>
-      <v-slide-group
-        v-model="model"
-        class="pa-4"
-        selected-class="bg-success"
-        show-arrows
-      >
-        <v-slide-group-item
-          v-for="n in 15"
-          :key="n"
-          v-slot="{ isSelected, toggle, selectedClass }"
-        >
-          <v-card
-            color="grey-lighten-1"
-            :class="['ma-4', selectedClass]"
-            height="200"
-            width="400"
-            @click="toggle"
-          >
-            <div class="d-flex fill-height align-center justify-center">
-              <v-scale-transition>
-                <v-icon
-                  v-if="isSelected"
-                  color="black"
-                  size="48"
-                  icon="mdi-close-circle-outline"
-                ></v-icon>
-              </v-scale-transition>
+  <v-container>
+    <v-row align="center" justify="center">
+      <v-col v-for="(head_line, i) in list_head_line" :key="i" cols="auto">
+        <v-card max-width="344">
+          <v-card-item>
+            <div class="subscription">
+              <div class="text-overline mb-1">{{ head_line.name }}</div>
+              <div class="text-h6 mb-1" >{{ head_line.price }}</div>
+              <div class="text-caption">
+                {{ head_line.discribe }}
+              </div>
             </div>
-          </v-card>
-        </v-slide-group-item>
-      </v-slide-group>
-    </v-sheet>
+          </v-card-item>
+
+          <v-card-actions>
+            <v-btn class="spec_btn"> To buy </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
-<style scoped>
-a {
-  text-decoration: none;
-  color: #030404;
-  font-size: 2rem;
-}
-a:hover {
-  text-decoration: none;
-  color: #cf0000;
-  border-bottom-color: rgba(208, 64, 0, 0.2);
-  cursor: pointer;
-}
+<style lang="sass" scoped>
+@import '../../assets/style/main.sass'
 
-</style>
-  
-  
+.subscription
+  height: 150px
+  width: 160px
+.spec_btn
+  background-color: $accent
+  margin: auto
+  color: $text
+  height: 50px
+</style> 
