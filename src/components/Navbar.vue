@@ -29,7 +29,7 @@ defineProps({
         type="text"
         v-model="value"
         placeholder="search"
-      ></input>
+      />
       <v-btn class="spec_btn" density="compact">Sing in</v-btn>
     </div>
   </div> 
