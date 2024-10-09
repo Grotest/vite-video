@@ -7,6 +7,11 @@
 it's a PET project Online cinema. This project is designed for training purposes only.
 Frontend with API call is develop. The project has all major features completed.
 
+## Features
+```bash
+User Interface: An intuitive interface that provides easy access to all application features.
+Integration with External Services: Ability to integrate with popular APIs to extend functionality.
+```
 ## Setup
 
 Make sure to install the dependencies:
@@ -34,11 +39,4 @@ Start the development server on `http://localhost:3000`:
 npm run dev
 
 ```
-## Function
-```bash
-Function 1: User Interface
-An intuitive interface that provides easy access to all features of the application.
 
-Function 2: Integration with external services
-Ability to integrate with popular APIs to extend functionality.
-```
