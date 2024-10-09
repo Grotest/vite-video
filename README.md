@@ -5,7 +5,7 @@
 <h3 align="center">Frontend developer</h3>
 
 it's a PET project Online cinema. This project is designed for training purposes only.
-Frontend with API call is develop.
+Frontend with API call is develop. The project has all major features completed.
 
 ## Setup
 
