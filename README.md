@@ -37,6 +37,11 @@ Start the development server on `http://localhost:3000`:
 ```bash
 # npm
 npm run dev
-
 ```
 
+## Additional features
+```bash
+Content Filtering: Ability to filter movies by genre, release year and other criteria via a modal window.
+Modal windows: Convenient modal windows for displaying movie information and selecting filters.
+Page Routing
+```
